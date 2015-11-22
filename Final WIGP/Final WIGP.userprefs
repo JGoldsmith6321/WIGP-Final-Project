@@ -1,0 +1,15 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MainBoard.cs">
+    <Files>
+      <File FileName="Assets\MainBoard.cs" Line="66" Column="31" />
+      <File FileName="Assets\Game Info.txt" Line="147" Column="1" />
+      <File FileName="Assets\StartGame\SwitchScene.cs" Line="15" Column="36" />
+      <File FileName="Assets\ClassInfo.cs" Line="47" Column="20" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
