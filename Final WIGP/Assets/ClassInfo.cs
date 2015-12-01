@@ -21,10 +21,17 @@ public class ClassInfo : MonoBehaviour {
 	}
 
 	public void SetColor(Color newColor){
+		if (newColor == outColor) {
+			ElseClicked();
+		}
 		color = newColor;
 	}
 
-	void OnMouseDown(){
+	public Color GetColor(){
+		return color;
+	}
+
+	void OnMouseDown(){//tells MainBoard this cube was clicked
 		core.WasClicked (cords);
 		if (color != startColor && color != outColor && active == false) {
 			active = true;
@@ -32,14 +39,14 @@ public class ClassInfo : MonoBehaviour {
 		}
 	}
 
-	public void ElseClicked(){
-		if (active == true) {
+	public void ElseClicked(){//deactivate
+		if (active) {
 			active = false;
 			Activate ();
 		}
 	}
 
-	public void Activate(){
+	public void Activate(){//Make bigger
 		if (active == true) {
 			transform.localScale += new Vector3 (0.1f, 0.1f, 0.1f);
 		} else {
@@ -48,15 +55,21 @@ public class ClassInfo : MonoBehaviour {
 		}
 	}
 
-	public bool CanTurn(){
+	public bool IsColor(){//tells if it's a color, any color
+		if (color != startColor && color != outColor) {
+			return true;
+		}
+		return false;
+	}
+
+	public bool CanTurn(){//IE: is white
 		bool CanTurn = false;
 		if (color == startColor) {//can only turn if white
 			CanTurn = true;
 		}
 		return CanTurn;
 	}
-
-	// Update is called once per frame
+	
 	void Update () {
 		GetComponent<Renderer> ().material.color = color;
 	}

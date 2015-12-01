@@ -49,6 +49,7 @@
      <Compile Include="Assets\ClassInfo.cs" />
      <Compile Include="Assets\MainBoard.cs" />
      <Compile Include="Assets\NextCubeCode.cs" />
+     <Compile Include="Assets\ScoreAndTimeTxt.cs" />
      <Compile Include="Assets\StartGame\SwitchScene.cs" />
      <None Include="Assets\Game Info.txt" />
  <Reference Include="UnityEngine.UI">
