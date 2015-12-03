@@ -11,7 +11,15 @@ public class SwitchScene : MonoBehaviour {
 	public void Go (){
 		Application.LoadLevel (1);
 	}
-	
+
+	public void Restart (){
+		Application.LoadLevel (0);
+	}
+
+	public void InfoScreen (){
+		Application.LoadLevel (3);
+	}
+
 	// Update is called once per frame
 	void Update () {
 	}

@@ -1,8 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\..\..\Desktop\Scand Myth\Assets\buttons.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SwitchScene.cs">
     <Files>
-      <File FileName="..\..\..\..\..\Desktop\Scand Myth\Assets\buttons.cs" Line="78" Column="1" />
+      <File FileName="Assets\Game Info.txt" Line="88" Column="7" />
+      <File FileName="Assets\Scripts\SwitchScene.cs" Line="22" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

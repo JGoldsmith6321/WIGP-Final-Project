@@ -9,11 +9,13 @@ public class ClassInfo : MonoBehaviour {
 	public Color startColor = Color.white;
 	public bool active = false;
 	public Color outColor = Color.black;
+	public Color otherOutColor = Color.gray;
+	public ColorCodesLetter text;
 
 	// Use this for initialization
 	void Start () {
+		text = GetComponentInChildren<ColorCodesLetter>();
 		core = GameObject.FindGameObjectWithTag ("core").GetComponent<MainBoard>();
-	
 	}
 
 	public void SetCords(int[] at){
@@ -21,10 +23,12 @@ public class ClassInfo : MonoBehaviour {
 	}
 
 	public void SetColor(Color newColor){
-		if (newColor == outColor) {
+		if (newColor == outColor || newColor == otherOutColor) {
 			ElseClicked();
 		}
 		color = newColor;
+		GetComponent<Renderer> ().material.color = color;
+		text.UpdateLetter (color);
 	}
 
 	public Color GetColor(){
@@ -33,7 +37,7 @@ public class ClassInfo : MonoBehaviour {
 
 	void OnMouseDown(){//tells MainBoard this cube was clicked
 		core.WasClicked (cords);
-		if (color != startColor && color != outColor && active == false) {
+		if (color != startColor && color != outColor && color!= otherOutColor && active == false) {
 			active = true;
 			Activate ();
 		}
@@ -50,13 +54,13 @@ public class ClassInfo : MonoBehaviour {
 		if (active == true) {
 			transform.localScale += new Vector3 (0.1f, 0.1f, 0.1f);
 		} else {
-			if(color != startColor && color!=outColor)
+			if(color != startColor && color!=outColor && color!= otherOutColor)
 			transform.localScale -= new Vector3 (0.1f, 0.1f, 0.1f);
 		}
 	}
 
 	public bool IsColor(){//tells if it's a color, any color
-		if (color != startColor && color != outColor) {
+		if (color != startColor && color != outColor && color!= otherOutColor) {
 			return true;
 		}
 		return false;
@@ -71,6 +75,5 @@ public class ClassInfo : MonoBehaviour {
 	}
 	
 	void Update () {
-		GetComponent<Renderer> ().material.color = color;
 	}
 }

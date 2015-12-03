@@ -13,6 +13,8 @@ public class MainBoard : MonoBehaviour {
 	public float ySpotStart = -3.1f;
 	public float instCubesMoveBy = 1.6f;
 	public int fullGameTime = 60;
+	public int timeInGame = 0;
+	public float oneSecAgo;
 	public float turnTime = 2f;
 	public float lastTurnTime = 0;
 	public ClassInfo[,] grid = new ClassInfo[8,5];//[xMax,yMax]
@@ -30,11 +32,15 @@ public class MainBoard : MonoBehaviour {
 	public int plusScoreOne = 10;
 	public int plusScoreMany = 5;
 	public bool won = false;
+	public StartEndStuff startScreenCode;
+	public GameObject startScreen;
 
 
 
 	// Use this for initialization
 	void Start () {
+		oneSecAgo = Time.time - 1;
+		startScreenCode = startScreen.GetComponent<StartEndStuff> ();
 		nextCubeCode = nextCube.GetComponent<NextCubeCode> ();
 		float ySpot = ySpotStart;
 		for (int y = 0; y < yMax; y++) {
@@ -52,6 +58,10 @@ public class MainBoard : MonoBehaviour {
 		// set lists for each row
 		//row1 = new List<Color>(grid[]);
 	
+	}
+
+	public int GetTime(){
+		return timeInGame;
 	}
 
 	public void ChangeNextCube(bool newTurn){//changes the next cube color
@@ -91,7 +101,7 @@ public class MainBoard : MonoBehaviour {
 	}
 
 	bool EndGame(){//checks the end game stuff
-		if (Time.time > fullGameTime) {
+		if (timeInGame > fullGameTime) {
 			if(score>0){won = true;}
 			return true;}
 		return false;
@@ -131,13 +141,26 @@ public class MainBoard : MonoBehaviour {
 			Color baseColor = plusCubes[0].GetColor ();
 			if(plusCubes[1].GetColor ()==baseColor && plusCubes[2].GetColor ()==baseColor && plusCubes[3].GetColor ()==baseColor && plusCubes[4].GetColor ()==baseColor){
 				score = score + plusScoreOne;
+				int changingAt=0;
+				while(changingAt < 5){
+					plusCubes[changingAt].SetColor(Color.black);
+					changingAt++;
+				}
 			}
-			else{score = score + plusScoreMany;}
-			int changingAt=0;
-			while(changingAt < 5){
-				plusCubes[changingAt].SetColor(Color.black);
-				changingAt++;
-			}
+			else{if(
+					(plusCubes[1].GetColor () != baseColor && plusCubes[2].GetColor () != baseColor && plusCubes[3].GetColor () != baseColor && plusCubes[4].GetColor () != baseColor)
+					&& (plusCubes[2].GetColor () != plusCubes[1].GetColor () && plusCubes[3].GetColor () != plusCubes[1].GetColor () && plusCubes[4].GetColor () != plusCubes[1].GetColor ())
+					&& (plusCubes[3].GetColor () != plusCubes[2].GetColor () && plusCubes[4].GetColor () != plusCubes[2].GetColor ()) 
+					&& (plusCubes[4].GetColor () != plusCubes[3].GetColor ())
+				 ){
+					score = score + plusScoreMany;
+					int changingAt=0;
+					while(changingAt < 5){
+						plusCubes[changingAt].SetColor(Color.gray);
+						changingAt++;
+					}
+				}
+			}//if all diffrent colors
 		}
 	}
 
@@ -190,7 +213,8 @@ public class MainBoard : MonoBehaviour {
 			}
 		}
 		if (openSpots == 0) {
-			Application.LoadLevel (0);
+			startScreenCode.SetAll(won,fullGameTime - timeInGame,score);
+			Application.LoadLevel (2);
 		}
 		return null;
 	}
@@ -198,9 +222,14 @@ public class MainBoard : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if (Time.time >= oneSecAgo + 1) {
+			timeInGame++;
+			oneSecAgo = Time.time;
+		}
 		GetScore ();
 		if (EndGame ()) {
-			Application.LoadLevel (0);
+			startScreenCode.SetAll(won,fullGameTime - timeInGame,score);
+			Application.LoadLevel (2);
 		}
 		if (Time.time > lastTurnTime) {//at start of turn
 			ChangeNextCube (true);
@@ -211,7 +240,10 @@ public class MainBoard : MonoBehaviour {
 				ClassInfo toChange = FindASpot(grid.GetLength (0));
 				if(toChange != null){
 					toChange.SetColor(Color.black);
-				}else{Application.LoadLevel (0);}//redundant, but I like it
+				}else{
+					startScreenCode.SetAll(won,fullGameTime - timeInGame,score);
+					Application.LoadLevel (2);
+				}//redundant, but I like it
 			}
 			keyWasPressedThisTurn = false;
 		}

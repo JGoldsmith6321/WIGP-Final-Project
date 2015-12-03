@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NextCubeCode : MonoBehaviour {
+public class PlayAgainButton : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+	
 	}
 
-	public void ChangeColor (Color setColor){
-		GetComponent<Renderer> ().material.color = setColor;
+	void OnMouseDown(){
+		Application.LoadLevel (0);
 	}
 	
 	// Update is called once per frame
