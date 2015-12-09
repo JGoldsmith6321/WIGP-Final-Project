@@ -1,11 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\crafting-life-hampshire\assets\craftingphase\Scripts\CraftingTutorialController.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ColorBlindModeButton.cs">
     <Files>
-      <File FileName="..\..\..\crafting-life-hampshire\assets\craftingphase\Scripts\MainMenuController.cs" Line="386" Column="49" />
-      <File FileName="..\..\..\crafting-life-hampshire\assets\craftingphase\Scripts\CraftingTutorialController.cs" Line="341" Column="32" />
-      <File FileName="..\..\..\crafting-life-hampshire\assets\craftingphase\Scripts\CraftingTutorialComponent.cs" Line="25" Column="56" />
-      <File FileName="..\..\..\crafting-life-hampshire\assets\craftingphase\Scripts\PurchaseHint.cs" Line="52" Column="86" />
+      <File FileName="Assets\Scripts\StartEndStuff.cs" Line="50" Column="15" />
+      <File FileName="Assets\Scripts\ClassInfo.cs" Line="16" Column="17" />
+      <File FileName="Assets\Scripts\ColorCodesLetter.cs" Line="13" Column="64" />
+      <File FileName="Assets\Scripts\ColorBlindModeButton.cs" Line="24" Column="44" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

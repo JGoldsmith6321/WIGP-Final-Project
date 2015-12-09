@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\ClassInfo.cs" />
+     <Compile Include="Assets\Scripts\ColorBlindModeButton.cs" />
      <Compile Include="Assets\Scripts\ColorCodesLetter.cs" />
      <Compile Include="Assets\Scripts\EndScreenTxtStuff.cs" />
      <Compile Include="Assets\Scripts\MainBoard.cs" />

@@ -6,6 +6,7 @@ public class StartEndStuff : MonoBehaviour {
 	public float time = 0;
 	public int score = 0;
 	public bool won = false;
+	public bool colorBlindModeOn = false;
 
 	public static StartEndStuff Instance;
 			
@@ -40,22 +41,34 @@ public class StartEndStuff : MonoBehaviour {
 		return won;
 	}
 
+	public bool UseColorBlindMode(){
+		return colorBlindModeOn;
+	}
+
+	public void ReverseUseColorBlindMode(){
+		colorBlindModeOn = !colorBlindModeOn;
+		SaveData ();
+	}
+
 	public void SaveData(){
 		StartEndStuff.Instance.time = time;
 		StartEndStuff.Instance.score = score;
 		StartEndStuff.Instance.won = won;
+		StartEndStuff.Instance.colorBlindModeOn = colorBlindModeOn;
 	}
 
 	void Start () {
 		time = StartEndStuff.Instance.time;
 		score = StartEndStuff.Instance.score;
 		won = StartEndStuff.Instance.won;
+		colorBlindModeOn = StartEndStuff.Instance.colorBlindModeOn;
 	}
 
 	void GetData(){
 		time = StartEndStuff.Instance.time;
 		score = StartEndStuff.Instance.score;
 		won = StartEndStuff.Instance.won;
+		colorBlindModeOn = StartEndStuff.Instance.colorBlindModeOn;
 	}
 
 	void Update () {
